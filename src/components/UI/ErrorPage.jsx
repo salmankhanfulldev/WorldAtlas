@@ -3,23 +3,12 @@ import { NavLink } from "react-router-dom";
 
 const ErrorPage = () => {
   return (
-    <>
-      <h1
-        style={{
-          color: "white",
-          fontSize: "40px",
-          display: "grid",
-          placeItems: "center",
-          marginTop:"50px",
-          textTransform:"uppercase"
-        }}
-      >
-        Oops! An error is occured
-      </h1>
-      <NavLink style={{display:"grid", placeItems:"center"}}>
-        <button >Go Back</button>
-      </NavLink>
-    </>
+    <section className="empty-state error-page">
+      <span className="error-code">404</span>
+      <h1>Page not found</h1>
+      <p>The page you are looking for does not exist or has moved.</p>
+      <NavLink className="primary-button" to="/">Go back home</NavLink>
+    </section>
   );
 };
 

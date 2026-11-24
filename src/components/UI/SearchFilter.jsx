@@ -9,11 +9,9 @@ const SearchFilter = ({
   setCountries,
 }) => {
   const handleInputChange = (event) => {
-    event.preventDefault();
     setSearch(event.target.value);
   };
   const handleSelectChange = (event) => {
-    event.preventDefault();
     setFilter(event.target.value);
   };
 
@@ -26,38 +24,39 @@ const SearchFilter = ({
     setCountries(sortCountry);
   };
   return (
-    <>
-      <section className="section-searchFilter container">
+    <section className="section-searchFilter">
+      <label className="search-box">
+        <span className="search-label">Search country</span>
         <input
           type="text"
-          placeholder="Search"
-          value={search}
+          placeholder="Search for a country..."
+          value={search || ""}
           onChange={handleInputChange}
         />
-        <div>
-          <button onClick={() => sortCountries("asc")}>Asc</button>
-        </div>
-
-        <div>
-          <button onClick={() => sortCountries("des")}>Des</button>
-        </div>
-
-        <div>
+      </label>
+      <div className="filter-controls">
+        <label>
+          <span className="search-label">Region</span>
           <select
             className="select-section"
             value={filter}
             onChange={handleSelectChange}
           >
-            <option value="all">All</option>
+            <option value="all">All regions</option>
             <option value="Africa">Africa</option>
-            <option value="America">America</option>
+            <option value="Americas">Americas</option>
             <option value="Asia">Asia</option>
             <option value="Europe">Europe</option>
             <option value="Oceania">Oceania</option>
+            <option value="Antarctica">Antarctica</option>
           </select>
+        </label>
+        <div className="sort-buttons" aria-label="Sort countries">
+          <button type="button" onClick={() => sortCountries("asc")}>A-Z</button>
+          <button type="button" onClick={() => sortCountries("des")}>Z-A</button>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

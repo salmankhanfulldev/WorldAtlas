@@ -11,9 +11,8 @@ const Footer = () => {
     TbMailPlus: <TbMailPlus />,
   };
   return (
-    <>
       <footer className="footer-section">
-        <div className="container grid grid-three-cols">
+        <div className="footer-grid page-shell">
           {footerContact.map((cuData, index) => {
             const { icon, title, details } = cuData;
             return (
@@ -29,14 +28,11 @@ const Footer = () => {
         </div>
 
         <div className="copyright-area">
-          <div className="container">
-            <div className="grid grid-two-cols">
+          <div className="copyright-inner page-shell">
               <div className="copyright-text">
                 <p>
-                  &copy; 2025, Design & Developed By
-                  <NavLink to="https://salmankhankkkuk.github.io/MyPersonalPortfolio/" target="_blank">
-                    Salman Khan
-                  </NavLink>
+                  &copy; {new Date().getFullYear()} WorldAtlas. Crafted by
+                  <a href="https://salmankhankkkuk.github.io/MyPersonalPortfolio/" target="_blank" rel="noreferrer"> Salman Khan</a>
                 </p>
               </div>
 
@@ -67,11 +63,9 @@ const Footer = () => {
                   </li>
                 </ul>
               </div>
-            </div>
           </div>
         </div>
       </footer>
-    </>
   );
 };
 

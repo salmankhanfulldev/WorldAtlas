@@ -1,37 +1,24 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 const CountryCard = ({ country }) => {
-  const { flags, name, population, region, capital } = country;
+  const { flags, name, region, capital } = country;
   return (
-    <>
-      <li className="country-card card">
-        <div className="container-card bg-white-box">
-          <img src={flags.png} alt="flag.alt" />
-          <div className="countryInfo">
-            <p className="card-title">
-              {name.common.length > 10
-                ? name.common.slice(0, 10) + "..."
-                : name.common}
-            </p>
-            <p>
-              <span className="card-description">Population: </span>
-              {population.toLocaleString()}
-            </p>
-            <p>
-              <span className="card-description">Region: </span> {region}
-            </p>
-            <p>
-              <span className="card-description">Capital: </span>
-              {capital[0]}
-            </p>
-
-            <NavLink to={`/country/${name.common}`}>
-              <button>Read More</button>
-            </NavLink>
-          </div>
+    <li className="country-card">
+      <NavLink to={`/country/${encodeURIComponent(name.common)}`} className="country-card-link" aria-label={`Explore ${name.common}`}>
+        <div className="flag-wrap">
+          <img src={flags?.png || flags?.svg} alt={`${name.common} flag`} />
         </div>
-      </li>
-    </>
+        <div className="country-info">
+          <p className="country-name">{name.common}</p>
+          <div className="country-meta">
+            <p><span>Region</span>{region || "N/A"}</p>
+            <p><span>Capital</span>{capital?.[0] || "N/A"}</p>
+            <p><span>Languages</span>{Object.values(country.languages || {}).slice(0, 2).join(", ") || "N/A"}</p>
+          </div>
+          <span className="card-action">View country <b>→</b></span>
+        </div>
+      </NavLink>
+    </li>
   );
 };
 

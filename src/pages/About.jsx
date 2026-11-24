@@ -1,36 +1,27 @@
-import React from "react";
 import CountryFact from "../api/countryData.json";
 const About = () => {
   return (
-    <>
-      <section className="section-about container">
-        <h2 className="container-title">
-          Here are the Interesting Facts <br /> We're Proud Of
-        </h2>
+      <section className="section-about page-shell">
+        <div className="page-heading">
+          <span className="eyebrow">Around the globe</span>
+          <h2>Facts worth knowing</h2>
+          <p>Discover remarkable places and natural wonders across the world.</p>
+        </div>
         <div className="gradient-cards">
           {CountryFact.map((country) => {
             const { id, countryName, captial, population, interestingFact } =
               country;
             return (
-              <div className="card" key={id}>
-                <div className="container-card bg-blue-box">
-                  <p className="card-title">{countryName}</p>
-                  <p>
-                    <span className="card-description">{captial}</span>
-                  </p>
-                  <p>
-                    <span className="card-description">{population}</span>
-                  </p>
-                  <p>
-                    <span className="card-description">{interestingFact}</span>
-                  </p>
-                </div>
-              </div>
+              <article className="fact-card" key={id}>
+                <span className="fact-number">{String(id).padStart(2, "0")}</span>
+                <h3>{countryName}</h3>
+                <p className="fact-location">{captial}</p>
+                <p className="fact-description">{interestingFact}</p>
+              </article>
             );
           })}
         </div>
       </section>
-    </>
   );
 };
 
